@@ -1,16 +1,35 @@
 import React, { useState } from 'react';
-import { Box, Heading, Text, Button, Image, Flex, Link, VStack, Input, FormControl } from '@chakra-ui/react';
+import { Box, Heading, Text, Button, Image, Flex, Link, VStack, Input, FormControl, HStack, Circle } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import birdFlying from './bird-flying.gif';
 import './App.css'; 
 import { useSwipeable } from 'react-swipeable';
 
+function Dots({ currentPage, numPages }) {
+  let dots = [];
+
+  for (let i = 0; i < numPages; i++) {
+    if (i === currentPage) {
+      dots.push(<Circle size="10px" bg="white" m="2" key={i}/>);
+    } else {
+      dots.push(<Circle size="10px" bg="whiteAlpha.500" m="2" key={i}/>);
+    }
+  }
+
+  return (
+    <HStack position="fixed" bottom="10px" w="100%" justify="center">
+      {dots}
+    </HStack>
+  );
+}
+
 function App() {
+  const numPages = 3;
   const [page, setPage] = useState(0);
   
   const handlers = useSwipeable({
-    onSwipedLeft: () => setPage((prev) => (prev + 1) % 3),
-    onSwipedRight: () => setPage((prev) => (prev - 1 + 3) % 3),
+    onSwipedLeft: () => setPage((prev) => (prev + 1) % numPages),
+    onSwipedRight: () => setPage((prev) => (prev - 1 + numPages) % numPages),
     preventDefaultTouchmoveEvent: true,
     trackMouse: true
   });
@@ -21,7 +40,7 @@ function App() {
         <Box
           bgGradient="linear(to-r,  #FAB3E5, #8BB0E9)" 
           w='100vw'
-          h='100vh' 
+          minH='100vh' 
           display='flex'
           flexDirection='column' 
           alignItems='center' 
@@ -90,12 +109,12 @@ function App() {
             textAlign='center'
             p={5}
           >
-        <VStack align="start" mt={10}>
-          <Heading size="md">Stay Updated</Heading>
+        <VStack align="center" mt={10}>
+          <Heading size="lg">Stay Updated</Heading>
           <Text>Join our newsletter to get the latest news and updates.</Text>
           <FormControl id="email">
             <Input type="email" placeholder="Enter your email" />
-            <Button mt={4} colorScheme="teal" type="submit">
+            <Button mt={4} colorScheme="whiteAlpha" type="submit">
               Subscribe
             </Button>
           </FormControl>
@@ -120,6 +139,7 @@ function App() {
           </Flex>
         </Flex>
       </Box>
+      <Dots currentPage={page} numPages={numPages} />
     </div>
   );
 }
