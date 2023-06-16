@@ -44,14 +44,52 @@ function App() {
         </Box>
       )}
       {page === 1 && (
-        <VStack align="center" mt={10}>
-          <Heading size="md">Our Mission</Heading>
-          <Text>
+        <Box
+          bgGradient="linear(to-r,  #FAB3E5, #8BB0E9)" 
+          w='100vw'
+          h='100vh' 
+          display='flex'
+          flexDirection='column' 
+          alignItems='center' 
+          justifyContent='center' 
+          color='white'
+        >
+          <Box
+            display='flex'
+            flexDirection='column' 
+            alignItems='center' 
+            justifyContent='center' 
+            textAlign='center'
+            p={5}
+          >
+        <VStack align="center" mt={4}>
+          <Heading size="lg">Our Mission</Heading>
+          <Text fontSize='lg'>
             Flock is a community-driven platform empowering women to flock together for safety, fostering a more secure and connected experience on college campuses.
           </Text>
         </VStack>
+        </Box>
+        </Box>
       )}
       {page === 2 && (
+        <Box
+          bgGradient="linear(to-r,  #FAB3E5, #8BB0E9)" 
+          w='100vw'
+          h='100vh' 
+          display='flex'
+          flexDirection='column' 
+          alignItems='center' 
+          justifyContent='center' 
+          color='white'
+        >
+          <Box
+            display='flex'
+            flexDirection='column' 
+            alignItems='center' 
+            justifyContent='center' 
+            textAlign='center'
+            p={5}
+          >
         <VStack align="start" mt={10}>
           <Heading size="md">Stay Updated</Heading>
           <Text>Join our newsletter to get the latest news and updates.</Text>
@@ -62,6 +100,8 @@ function App() {
             </Button>
           </FormControl>
         </VStack>
+        </Box>
+        </Box>
       )}
 
       <Box h="100%" w="100%" p={4} color="white" bgGradient="linear(to-r, #FAB3E5, #8BB0E9)">
